@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="app.css">
+    <title>Books app</title>
+</head>
+<body >
+
+  <section class="header__section">
+    <div class="container" id="body">
+      <header class="header">
+        <img class="header__img" src="http://localhost:5000/img/new_a.svg" width="200" height="100" alt="">
+        <form class="header__form" action="">
+          <input name="" class="header__input" type="text">
+          <button type="submit" class="header__btn">search</button>
+        </form>
+        <div class="icons">
+          <i class='bx bx-book-open'></i>
+          <i class='bx bx-bookmarks'></i>
+          <i class='bx bx-book-bookmark' ></i>
+          <i class='bx bxs-book-heart'></i>
+        </div>
+      </header> <!--end of header-->
+    </div> <!--end of header__container-->
+  </section> <!--end of header__section-->
+
+   <section class="section__container">
+        <div class="container box">
+          <div class="boxs">
+            <button id="btn" type="button" class="button btn-primary">Add Book</button>
+            <form class="form">
+                <div class="select__box">
+                <select class="select select_2" name="select" id="select">
+                    <option  default disabled selected>Sort Author</option>
+                    <% buildings.sort_author.map(i => {  %>
+                        <option class="option" value= <%= i.sort_a_id %>  > <%= i.sort_a_name %>  </option>
+                    <% }) %>
+                </select>
+                </div>
+                <select class="select" name="select" id="select2">
+                  <option  default disabled selected>Sort Nashr</option>
+                  <% buildings.sort_edition.map(i => {  %>
+                      <option class="option" value= <%= i.sort_e_id %>  > <%= i.sort_e_name %>  </option>
+                  <% }) %>
+               </select>
+                <select class="select" name="select" id="select3">
+                  <option  default disabled selected>Sort Lang</option>
+                  <% buildings.sort_language.map(i => {  %>
+                    <option class="option" value= <%= i.sort_la_id %>  > <%= i.sort_la_name %>  </option>
+                <% }) %>
+                </select>
+                  <select class="select" id="selected">
+                    <option  class="option" default disabled selected>Sort num</option>
+                    <option  class="option" name="5" value="5">5</option>
+                    <option  class="option" name="10" value="10">10</option>
+                    <option  class="option" name="15" value="15">15</option>
+                    <option  class="option" name="20" value="20">20</option>
+                    <option  class="option" name="25" value="25">25</option>
+                    <option  class="option" name="30" value="30">30</option>
+                  </select>
+                  <select class="select" id="selected2">
+                    <option  class="option" default disabled selected>Sort order</option>
+                    <option  class="option" name="year" value="year">year</option>
+                    <option  class="option" name="asc" value="asc">asc</option>
+                    <option  class="option" name="desc" value="desc">desc</option>
+                    <option  class="option" name="new" value="new">new</option>
+                  </select>
+              </form>
+          </div>
+
+              <form  class="form__inputs" action="/" method="POST" enctype="application/    x-www-form-urlencoded">
+                <h4 class="form__head">Create new book</h4>
+                <div class="input_box">
+                  <label class="input_label" for="">Add new book name</label>
+                  <input class="inputs" name="name" type="text" placeholder="add new book name">
+                </div>
+                <div class="input_box">
+                  <label class="input_label" for="">Add new book price</label>
+                  <input class="inputs" name="price" type="text" placeholder="add new book price">
+                </div>
+                <div class="input_box">
+                  <label class="input_label" for="">Add new book year</label>
+                  <input class="inputs" name="year" type="number" placeholder="add new book year">
+                </div>
+                <div class="selects">
+                  <label class="input_label" for="edition">Select All</label>
+                  <select class="select selects" name="edition" id="select2">
+                    <option  default disabled selected>Sort Nashr</option>
+                    <% buildings.sort_edition.map(i => {  %>
+                        <option class="option" value= <%= i.sort_e_id %>  > <%= i.sort_e_name %>  </option>
+                    <% }) %>
+                 </select>
+                 <select class="select selects" name="language" id="select3">
+                  <option  default disabled selected>Sort Lang</option>
+                  <% buildings.sort_language.map(i => {  %>
+                    <option class="option" value= <%= i.sort_la_id %>  > <%= i.sort_la_name %>  </option>
+                <% }) %>
+                </select>
+                <select class="select selects" name="author" id="select">
+                  <option  default disabled selected>Sort Author</option>
+                  <% buildings.sort_author.map(i => {  %>
+                      <option class="option" value= <%= i.sort_a_id %>  > <%= i.sort_a_name %>  </option>
+                  <% }) %>
+              </select>
+                </div>
+                <button class="buttons" type="submit">Add Book</button>
+                <div class="">
+                  <button id="btnX" class="buttoncha"><i class='bx bx-message-square-x'></i></button>
+                </div>
+              </form>
+
+              <form id="formE"  class="form__edit" action="/" method="PUT" enctype="application/    x-www-form-urlencoded">
+                <h4 class="form__head">Edit book</h4>
+                <div class="input_box">
+                  <label class="input_label" for="">Edit book name</label>
+                  <input class="inputs" name="name" type="text" placeholder="edit book name">
+                </div>
+                <!-- <div class="input_box">
+                  <label class="input_label" for="">Edit book price</label>
+                  <input class="inputs" name="price" type="text" placeholder="edit book price">
+                </div>
+                <div class="input_box">
+                  <label class="input_label" for="">Edit book year</label>
+                  <input class="inputs" name="year" type="number" placeholder="edit book year">
+                </div> -->
+                
+                <button class="buttons" type="submit">Edit Book</button>
+              </form>
+
+            <div class="books__box">
+                <%  buildings.rows.map(item => { %>
+                <div class="books">
+                    <img class="book_img" src="http://localhost:5000/img/book3.webp" width="300" height="300" alt="">
+                    <h2 class="book__title"> <%= item.book_name %>  </h2>
+                    <p class="book__price">Price:  <span><%= item.book_price %></span>  </p>
+                    <span class="book__year">Year: <span><%= item.book_year %></span>  </span>
+                  <div class="box__btns">
+                    <button class="book_btn" onclick="edit('<%= item.book_id  %>')" ><i class='bx bx-edit'></i></button>
+                    <button class="book_btn2" onclick="delet('<%= item.book_id %>')"><i class='bx bxs-message-square-x'></i></button>
+                  </div>
+                </div>
+                <% }) %>
+            </div>  
+        </div>
+    </section>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
